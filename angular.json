@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "doan5"
+    }
+  },
+  "defaultProject": "doan5",
+  "cli": {
+    "analytics": "879ceaa8-3578-45da-a517-46e43b910486"
+  }
 }

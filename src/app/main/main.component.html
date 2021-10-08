@@ -1,0 +1,133 @@
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="assets/img/lanquantu1.jpg">
+                        <h5><a href="#">Cây lan quân tử</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="assets/img/cayphatloc1.jpg">
+                        <h5><a href="#">Cây phát lộc</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="assets/img/cayphuquy1.png">
+                        <h5><a href="#">Cây phú quý</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="assets/img/vanthanhnien1.jpg">
+                        <h5><a href="#">Cây vạn thanh niên</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="assets/img/caydaynhen1.png">
+                        <h5><a href="#">Cây dây nhện</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!-- Categories Section End -->
+   <!-- Featured Section End -->
+    <!-- Featured Section Begin -->
+    <section class="featured spad" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Sản phẩm nổi bật</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter">
+                <ng-container *ngFor="let its of list_item_swish">   
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" style="border: 1px solid #68a20a;"> 
+                            <img src="{{its.hinhanh}}" alt="">
+                            <ul class="featured__item__pic__hover">
+                                <li><a (click)="swish(its)" title="Yêu thích"><i class="fa fa-heart"></i></a></li>
+                                <li><a (click)="addToCart(its)" title="Thêm giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a [routerLink]="['/product/detail',its.macaycanh]">{{its.tencaycanh}}</a></h6>
+                            <h5>{{ its.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            </div>
+        </div>
+      </section>
+      <!-- Featured Section End -->
+    <!-- Featured Section Begin -->
+    <section class="featured spad" style="margin-top: -90px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Sản phẩm bán chạy</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter">
+                <ng-container *ngFor="let itb of list_item_buy">   
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" style="border: 1px solid #68a20a;"> 
+                            <img src="{{itb.hinhanh}}" alt="">
+                            <ul class="featured__item__pic__hover">
+                                <li><a (click)="swish(itb)"><i class="fa fa-heart"></i></a></li>
+                                <li><a (click)="addToCart(itb)" title="Thêm giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a [routerLink]="['/product/detail',itb.macaycanh]">{{itb.tencaycanh}}</a></h6>
+                            <h5>{{ itb.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            </div>
+        </div>
+      </section>
+      <!-- Featured Section End -->
+  <!-- Featured Section Begin -->
+  <section class="featured spad" style="margin-top: -90px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Tất cả sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            <ng-container *ngFor="let it of list_item">   
+            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                <div class="featured__item">
+                    <div class="featured__item__pic set-bg" style="border: 1px solid #68a20a;"> 
+                        <img src="{{it.hinhanh}}" alt="">
+                        <ul class="featured__item__pic__hover">
+                            <li><a (click)="swish(it)" title="Yêu thích"><i class="fa fa-heart"></i></a></li>
+                            <li><a (click)="addToCart(it)" title="Thêm giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a [routerLink]="['/product/detail',it.macaycanh]">{{it.tencaycanh}}</a></h6>
+                        <h5>{{ it.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        </div>
+    </div>
+  </section>
+ 
+ 

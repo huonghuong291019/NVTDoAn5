@@ -1,0 +1,83 @@
+
+   <!-- Breadcrumb Section Begin -->
+<section>
+    <img src="assets/img/background.png" style="position: absolute;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="position: relative;margin-top: 30px;">
+                <div class="breadcrumb__text">
+                    <h2>{{item.tenloai}}</h2>
+                    <div class="breadcrumb__option">
+                        <a routerLink="/home">Trang chủ</a>
+                        <span>{{item.tenloai}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5" style="margin-top: 40px;">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4 style="border-bottom: 3px solid #36500e;padding-bottom: 20px;">Loại sản phẩm</h4>
+                            <ul>
+                                <ng-container *ngFor="let m of menus">
+                                    <li><a [routerLink] = "['/product/list',m.maloai]">{{m.tenloai}}</a></li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-7">
+                    <div class="filter__item" style="border-top: none;">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <p><span style="color: #0d6903;font-weight: bold;font-size: 20px;padding-right: 5px;">{{totalItems}}</span>  Sản phẩm</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <span style="padding-right: 10px;">Chọn số sản phẩm: </span>
+                                    <select id="sortByselect" [(ngModel)]="pageSize" (ngModelChange)="loadPage(1)" style="width: 70px;">
+                                        <option>3</option>
+                                        <option>5</option>
+                                        <option>20</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <ng-container *ngFor="let it of list">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" style="border: 1px solid #68a20a;">
+                                    <img src="{{it.hinhanh}}">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a (click)="swish(it)" title="Yêu thích"><i class="fa fa-heart"></i></a></li>
+                                        <li><a (click)="addToCart(it)" title="Thêm giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a [routerLink]="['/product/detail',it.macaycanh]">{{it.tencaycanh}}</a></h6>
+                                    <h5>{{ it.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    </div>
+                        <nav aria-label="navigation">
+                            <ngb-pagination [collectionSize]="totalItems" [pageSize]="pageSize" [(page)]="page" [maxSize]="10" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+                        </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->

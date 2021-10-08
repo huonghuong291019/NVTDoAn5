@@ -1,0 +1,74 @@
+<!-- Breadcrumb Section Begin -->
+<section>
+    <img src="assets/img/background.png" style="position: absolute;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="position: relative;margin-top: 30px;">
+                <div class="breadcrumb__text">
+                    <h2>Giỏ hàng</h2>
+                    <div class="breadcrumb__option">
+                        <a routerLink="/home">Trang chủ</a>
+                        <span>Giỏ hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<div style="margin-top: 150px;width: 1200px;margin-left: 52px;" *ngIf="items.length > 0" >
+    <form action="#"> 
+  <table class="table table-bordered"style="text-align:center;">
+    <thead style="background: #e0fbb6;color: black;">
+      <tr >
+        <th scope="col">Ảnh</th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Tổng tiền</th>
+        <th scope="col">Xóa</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of items">
+            <td style="width:100px"><img src="{{c.hinhanh}}" alt="" style="width:100px"></td>
+            <td>{{c.tencaycanh}}</td>
+            <td>{{ c.gia.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</td>
+            <td><input style="border: 1px solid #00000033;" #inp  min="1" max="100" (change)="addQty(c,inp.value)" [value]="c.quantity" type="number"></td>
+            <td>{{ c.money.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</td>
+            <td><a (click)="_cart.deleteItem(c.macaycanh)"><i class="fa fa-trash-o" style="color: red; cursor: pointer;"></i></a></td>
+        </tr>
+    </tbody>
+  </table>
+  <div class="cart_submit" style="margin-top: 30px;">
+    <button type="button" (click)="clearCart()" style="margin-right: 20px;border: none;width: 150px;height: 50px;color: #ffffff;background: #e60303;">Xóa giỏ hàng</button>
+  </div>   
+    <!--coupon code area start-->
+    <div class="coupon_area">
+        <div class="row">
+            <div class="col-lg-6 col-md-6"></div>
+            <div class="col-lg-6 col-md-6" style="margin-bottom: 100px; margin-top: -50px;">
+                <div class="coupon_code right" style="border: 1px solid #dddddd;">
+                    <div class="coupon_inner" style="padding: 20px;">
+                        <div class="cart_subtotal">
+                            <p style="float: left;width: 400px;color: #000000cf;font-weight: bold;font-size: 18px;">Số lượng</p>
+                            <p class="cart_amount"> {{quanti}} ( Sản phẩm )</p>
+                        </div>
+                       <div class="cart_subtotal">
+                           <p style="float: left;width: 400px;color: #000000cf;font-weight: bold;font-size: 18px;">Tổng tiền</p>
+                           <p class="cart_amount">{{ total.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</p>
+                       </div>
+                       <div class="checkout_btn" style="text-align: center; height: 50px;padding: 11px;background: #4b8308;font-weight: bold;margin-top: 50px;">
+                           <a  routerLink="/customer/checkout" style="font-size: 20px;color: white;" >Tiến hành thanh toán</a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--coupon code area end-->  
+    </form>
+</div>
+<div style="margin-top: 100px;width: 1200px;margin-left: 52px; text-align: center ;margin-bottom: 70px;" *ngIf="items.length == 0" >  
+      <p style="color:#18422e">Giỏ hàng rỗng <span style="padding-left: 3px;padding-right: 10px;"> >>></span>  <span style="font-weight: bold;"><a routerLink="/home" style="color: #6eaf0b;">Hãy thêm sản phẩm vào giỏ !</a></span></p>
+</div>

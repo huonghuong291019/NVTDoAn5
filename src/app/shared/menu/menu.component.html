@@ -1,0 +1,78 @@
+<!-- Header Section Begin -->
+<header class="header">
+ 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a routerLink="/home" style="width: auto;margin-top: -100px; height: 0px;"><img src="assets/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a routerLink="/home">Trang chủ</a></li>
+                        <li><a routerLink="/introduce">Giới thiệu</a></li>
+                        <li><a routerLink="/new">Tin tức</a></li>
+                        <li><a routerLink="/contact">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a routerLink="/customer/swish"><i class="fa fa-heart"></i></a></li>
+                        <li><a routerLink="/customer/cart"><i class="fa fa-shopping-bag"></i> <span>{{total}}</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">Tổng tiền: <span>{{ money.toLocaleString('vi', {style : 'currency', currency : 'VND'})}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+  
+  <!-- Hero Section Begin -->
+  <section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh mục</span>
+                    </div>
+                    <ul>
+                        <ng-container *ngFor="let m of menus">
+                            <li><a [routerLink] = "['/product/list',m.maloai]">{{m.tenloai}}</a></li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form [formGroup]=""  method="get">
+                            <input type="text" name="search" id="headerSearch" placeholder="Tìm kiếm" #timkiem>
+                            <button (click)="search(timkiem.value)" class="site-btn">Tìm kiếm</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+03 55.483.190</h5>
+                            <span>Hỗ trợ 24/7 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+  <!-- Hero Section End -->
